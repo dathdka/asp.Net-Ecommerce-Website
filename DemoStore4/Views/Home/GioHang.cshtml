@@ -1,0 +1,85 @@
+﻿@model IEnumerable<DemoStore4.Models.GioHang>
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/NewLayout.cshtml";
+    double TongTien = 0;
+}
+
+<h2>GioHang</h2>
+<br />
+<br />
+<br />
+<h1 style="text-align:center">Giỏ hàng của bạn</h1>
+<div class="row" style="align-items:center">
+    <div class="col-lg-12" style="align-items:center">
+        <table class="table" style="align-items:center">
+            <tr >
+                <th>
+                    Tên sản phẩm
+                </th>
+                <th>
+                    Số lượng
+                </th>
+                <th>
+                    Thành tiền
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr style="margin-left:auto; margin-right:auto">
+                    <td>
+                        @item.TenSP
+                    </td>
+                    <td>
+                        <button data-giam-id="@item.MaSP" class="btn btn-danger btn-sm js-tongle-Giam">-</button>
+                        @item.SoLuongThem
+                        <button data-tang-id="@item.MaSP" class="btn btn-primary btn-sm js-tongle-Tang">+</button>
+                    </td>
+                    <td>
+                        @item.GiaSauGiam
+                        @{TongTien += item.GiaSauGiam; }
+                    </td>
+                    <td>
+                        <img src="~/Hinh/@Url.Content(item.HinhAnh)" width="80" height="60" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("Xóa sản phẩm", "Delete", new { id = item.Id, id2 = item.MaSP }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+                            }
+        </table>
+    </div>
+        <div class="col-sm-10" style="text-align:right; ">
+            <h2 >Tổng cộng = @TongTien</h2>
+            <br />
+            @Html.ActionLink("Xác nhận đơn hàng", "XacNhanDonHang", new {TongTien = TongTien}, new {@class ="btn btn-primary"})
+        </div>
+    </div>
+
+    @section scripts{
+        <script>
+            $(document).ready(function () {
+                $(".js-tongle-Giam").click(function (e) {
+                    var button = $(e.target);
+                    $.post("/api/GiamSL", { MaSP: button.attr("data-giam-id") })
+                    .done(function () {
+                        location.reload()
+                    }).fail(function (erromessage) {
+                        alert(erromessage.responseJSON.Message);
+                    });
+                });
+                $(".js-tongle-Tang").click(function (e) {
+                    var button = $(e.target);
+                    $.post("/api/ThemSL", { MaSP: button.attr("data-tang-id") })
+                    .done(function () {
+                        location.reload();
+                    }).fail(function (erromessage) {
+                        alert(erromessage.responseJSON.Message);
+                    });
+                });
+
+            });
+        </script>
+    }

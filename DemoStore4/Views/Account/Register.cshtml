@@ -1,0 +1,89 @@
+﻿@model DemoStore4.Models.RegisterViewModel
+@{
+    Layout = null;
+}
+
+
+
+<head>
+    <title>Đăng ký</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/Asset/Login/images/icons/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/css/main.css">
+</head>
+<body>
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="limiter">
+            <div class="container-login100" style="background-image: url(/Hinh/724320.jpg);">
+                <div class="wrap-login100">
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-logo">
+                            <i class="zmdi zmdi-landscape"></i>
+                        </span>
+                        <span class="login100-form-title p-b-34 p-t-27">
+                            Đăng ký
+                        </span>
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Name, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Address, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-6 control-label" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-6 control-label" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" class="btn btn-default" value="Register" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

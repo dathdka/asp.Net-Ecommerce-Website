@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DemoStore4.Models.DonDH>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    double TongTien = 0;
+}
+
+<h2>Danh sách hóa đơn</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThoiGianDat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongTien)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThoiGianDat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TongTien)
+        </td>
+        @{TongTien += item.TongTien;}
+    </tr>
+   
+}
+
+</table>
+<h1>Tổng cộng: @TongTien</h1>

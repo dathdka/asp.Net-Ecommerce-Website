@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DemoStore4.Models.SQLViews.KhuyenMaiHome>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/NewLayout.cshtml";
+}
+
+<div class="banner header-text">
+    <div class="owl-banner owl-carousel">
+        <a href="/Home/About">
+            <div class="banner-item-01"></div>
+        </a>
+        <a href="/Home/About">
+            <div class="banner-item-02"></div>
+        </a>
+    </div>
+</div>
+
+<div class="latest-products">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Sản phẩm có khuyến mãi</h2>
+                    <a href="/SanPham/SanPhamKM">Xem toàn bộ sản phẩm có khuyến mãi<i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="product-item">
+           
+                        <a href="#"><img src="~/Hinh/@Url.Content(item.HinhAnh)" width="150" height="200" ></a>
+                        <div class="down-content">
+                            <a href="#"><h4>@item.TenSP</h4></a>
+                            <p style="text-decoration: line-through;">@item.DonGia    </p><p style="color:orangered; font-size:30px">@item.GiaSauGiam</p>
+                            <p>@item.MoTa</p> 
+                            <br /> <a href="/SanPham/Index" class="btn btn-primary">Mua ngay</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+﻿@model DemoStore4.Models.SQLViews.NguoiDung
+
+@{
+    ViewBag.Title = "XacNhanDonHang";
+    Layout = "~/Views/Shared/NewLayout.cshtml";
+}
+
+<h2>XacNhanDonHang</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="col-2"></div>
+    <div class="form-horizontal col-10">
+        <br />
+        <br />
+        <br />
+        <h4>Thông tin người dùng</h4>
+        <br />
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Model.Name
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Model.Email
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Model.PhoneNumber
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Model.Address
+            </div>
+        </div>
+
+        <div class="col-9" style="text-align:right;font-size:24px">@Model.TongTien</div>
+        @if (!Model.DaNhap)
+        {
+            <input style="margin-left:20px" type="text" name="voucher" placeholder="Nhập voucher" />
+            <input type="submit" value="Áp dụng mã khuyến mãi" class="btn btn-danger" />
+        }
+         <br />
+
+        @Html.ActionLink("Thanh toán", "Payment", new {ThanhTien = Model.TongTien }, new {@class = "btn btn-primary" })
+    </div>
+}
+
+

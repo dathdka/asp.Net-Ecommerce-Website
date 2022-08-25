@@ -1,0 +1,82 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--search-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <link href="/Asset/Search/css/main.css" rel="stylesheet" />
+    <!---->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>Store 4</title>
+
+    <link href="/Asset/Home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Asset/Home/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/Asset/Home/assets/css/templatemo-sixteen.css">
+    <link rel="stylesheet" href="/Asset/Home/assets/css/owl.css">
+
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <header class="">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#"><h2>Store <em>4</em></h2></a>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Home/Index">
+                                Trang chủ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/ThongTin/Index">Thông tin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/ThongTin/DonDatHang">Lịch sử</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/ThongTin/Voucher">Voucher</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/TimKiem"><img src="~/Hinh/search.png" width="25" alt="Tìm kiếm" /></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/GioHang"><img src="~/Hinh/carts.png" width="25" alt="Giỏ hàng" /></a>
+                        </li>
+                        @Html.Partial("_LoginPartial")
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    @RenderBody()
+    <footer>
+        <p>Địa chỉ: 425A Điện Biên Phủ</p>
+        <p>Email: dathdka@gmail.com</p>
+        <p>Số Điện thoại: 0327.227.902</p>
+
+    </footer>
+    <script src="/Asset/Home/vendor/jquery/jquery.min.js"></script>
+    <script src="/Asset/Home/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/Asset/Home/assets/js/custom.js"></script>
+    <script src="/Asset/Home/assets/js/owl.js"></script>
+    <script src="/Asset/Home/assets/js/slick.js"></script>
+    <script src="/Asset/Home/assets/js/isotope.js"></script>
+    <script src="/Asset/Home/assets/js/accordions.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

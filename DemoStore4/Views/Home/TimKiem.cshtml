@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "TimKiem";
+    Layout = "~/Views/Shared/NewLayout.cshtml";
+}
+
+<h2>TimKiem</h2>
+
+@using (Html.BeginForm("TimKiem","Home"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="s131">
+            <div class="inner-form">
+                <div class="input-field first-wrap">
+                    <input id="search" name="TuKhoa" type="text" style="width:380px" placeholder="Nhập sản phẩm bạn muốn tìm kiếm" />
+                </div>
+                <div class="input-field second-wrap">
+                    <div class="input-select">
+                        <select data-trigger="" name="LuaChon">
+                            <option placeholder="">Sản phẩm</option>
+                            <option>Loại sản phẩm</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-field third-wrap">
+                    <input type="submit" value="Tìm kiếm" class="btn btn-success" style="margin-left:auto;margin-right:auto;display:block;margin-top:22%;margin-bottom:0%;width:180px"/>
+                </div>
+            </div>
+    </div>
+    <script src="/Asset/Search/js/extention/choices.js"></script>
+    <script>
+      const choices = new Choices('[data-trigger]',
+      {
+        searchEnabled: false
+      });
+
+    </script>
+}
+

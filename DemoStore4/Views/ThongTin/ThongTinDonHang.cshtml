@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DemoStore4.Models.CT_DDH>
+
+@{
+    ViewBag.Title = "ThongTinDonHang";
+    Layout = "~/Views/Shared/LayoutTT.cshtml";
+}
+
+<h2>ThongTinDonHang</h2>
+
+<br />
+<br />
+<br />
+
+<br />
+<h1>Chi tiết đơn hàng</h1>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThoiGianNhan)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThoiGianNhan)
+        </td>
+        <td>
+            <img src="~/Hinh/@Url.Content(item.HinhAnh)" width="200" />
+        </td>
+    </tr>
+}
+
+</table>

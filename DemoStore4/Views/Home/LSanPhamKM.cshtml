@@ -1,0 +1,6 @@
+﻿@model IEnumerable<DemoStore4.Models.LoaiSP>
+
+@foreach (var item in Model)
+{
+    <a href="@Url.Action("SPTheoLoaiKM", "Home", new {id = item.MaLSP })" class="list-group-item">@item.TenLSP</a>
+}

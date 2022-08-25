@@ -1,0 +1,42 @@
+﻿@model IEnumerable<DemoStore4.Models.DonDH>
+
+@{
+    ViewBag.Title = "DonDatHang";
+    Layout = "~/Views/Shared/LayoutTT.cshtml";
+}
+
+<h2>DonDatHang</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaDDH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThoiGianDat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongTien)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaDDH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThoiGianDat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TongTien)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "ThongTinDonHang", new { id=item.MaDDH }) 
+        </td>
+    </tr>
+}
+
+</table>

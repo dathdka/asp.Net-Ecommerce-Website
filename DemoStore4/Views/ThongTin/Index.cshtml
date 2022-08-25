@@ -1,0 +1,61 @@
+﻿@model DemoStore4.Models.SQLViews.NguoiDung
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutTT.cshtml";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>NguoiDung</h4>
+    <hr />
+    <div class="row">
+        <dl class="dl-horizontal col-lg-12" style="text-align:center">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Points)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Points)
+            </dd>
+
+        </dl>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa thông tin", "SuaThongTin", new { @class = "btn btn-primary" })
+    @Html.ActionLink("Trở lại trang chủ", "Index","Home",new {@class="btn btn-default" })
+</p>

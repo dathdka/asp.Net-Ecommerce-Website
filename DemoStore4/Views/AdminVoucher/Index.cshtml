@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DemoStore4.Models.Voucher>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tất cả Voucher</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaKM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaKM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayBD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayKT)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaKM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaKM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayBD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayKT)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaKM }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaKM }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaKM },new { onclick = "return confirm('Bạn có muốn xóa')"})
+        </td>
+    </tr>
+}
+
+</table>

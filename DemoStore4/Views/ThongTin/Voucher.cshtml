@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DemoStore4.Models.CT_Voucher>
+
+@{
+    ViewBag.Title = "Voucher";
+    Layout = "~/Views/Shared/LayoutTT.cshtml";
+}
+
+<h2>Voucher</h2>
+<br /> <br /><br />
+<h1 style="text-align:center">Voucher của tôi</h1>
+
+<table class="table" style="margin:auto; padding:10px">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaKM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaKM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTa)
+        </td>
+    </tr>
+}
+
+</table>

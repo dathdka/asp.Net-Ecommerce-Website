@@ -1,0 +1,94 @@
+﻿@using DemoStore4.Models;
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/Asset/Login/images/icons/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/Asset/Login/css/main.css">
+</head>
+<body>
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="limiter">
+            <div class="container-login100" style="background-image: url(/Hinh/724320.jpg);">
+                <div class="wrap-login100">
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-logo">
+                            <i class="zmdi zmdi-landscape"></i>
+                        </span>
+                        <span class="login100-form-title p-b-34 p-t-27">
+                            Log in
+                        </span>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    Remember me
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn">
+                                Login
+                            </button>
+                        </div>
+                        <div class="text-center p-t-90">
+                            <a class="txt1" href="#">
+                                Forgot Password?
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div id="dropDownSelect1"></div>
+
+    <script src="/Asset/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/Asset/Login/vendor/animsition/js/animsition.min.js"></script>
+    <script src="/Asset/Login/vendor/bootstrap/js/popper.js"></script>
+    <script src="/Asset/Login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Asset/Login/vendor/select2/select2.min.js"></script>
+    <script src="/Asset/Login/vendor/daterangepicker/moment.min.js"></script>
+    <script src="/Asset/Login/vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="/Asset/Login/vendor/countdowntime/countdowntime.js"></script>
+    <script src="/Asset/Login/js/main.js"></script>
+
+</body>
+</html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

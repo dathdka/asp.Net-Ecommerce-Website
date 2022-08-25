@@ -1,0 +1,82 @@
+﻿@model IEnumerable<DemoStore4.Models.SQLViews.ViewSanPham>
+
+@{
+    ViewBag.Title = "KetQuaTimKiem";
+    Layout = "~/Views/Shared/NewLayout.cshtml";
+}
+
+<h2>KetQuaTimKiem</h2>
+
+
+ <div class="latest-products">
+    <div class="container">
+        <span>Sắp xếp theo:</span>
+        @Html.ActionLink("Tên sản phẩm", "KetQuaTimKiem", new { sortOrder = ViewBag.NameSortParm }, new { @Class = "btn btn-success" }) -
+        @Html.ActionLink("Đơn giá", "KetQuaTimKiem", new { sortOrder = ViewBag.PriceSortParm }, new { @Class = "btn btn-success" })
+        <div class="row">
+            <div class="col-lg-3">
+                @Html.Action("LSanPham", "Home")
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3">
+                    <div class="product-item">
+
+                        <a href="#"><img src="~/Hinh/@Url.Content(item.HinhAnh)" width="200" height="250"></a>
+                        <div class="down-content">
+                            <a href="#"><h4>@item.TenSP</h4></a>
+                            @if (item.KhuyenMai > 0)
+                            {
+                                <p style="text-decoration: line-through;">@item.DonGia   </p><strong style="color:orangered;text-decoration:none;font-size:24px">@item.GiaSauGiam</strong>
+                            }
+                            else
+                            {
+                                <strong style="font-size:24px">@item.GiaSauGiam</strong>
+                            }
+                            <p>@item.MoTa</p>
+                            @if (item.DaDangNhap)
+                            {
+                                if (item.DaThemVao)
+                                {
+                                    <button data-sanpham-id="@item.MaSP" class="btn btn-primary btn-sm js-tongle-ThemVao">Thêm vào giỏ hàng</button>
+                                }
+                                else
+                                {
+                                    <button data-sanpham-id="@item.MaSP" class="btn btn-success btn-sm js-tongle-ThemVao">Đã thêm vào giỏ</button>
+                                }
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".js-tongle-ThemVao").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/ThemVaoGio", { MaSP: button.attr("data-sanpham-id") })
+                .done(function (result) {
+                    if (result=="cancel") {
+                        button
+                                .removeClass("btn-success")
+                                .addClass("btn-primary")
+                                .text("Thêm vào giỏ hàng");
+                    }
+                    else {
+                        button
+                                .text("Đã thêm vào giỏ")
+                                .removeClass("btn-primay")
+                                .addClass("btn-success");
+                    }
+
+                })
+            }).fail(function () {
+                alert("Có lỗi xảy ra");
+            });
+        });
+    </script>}
